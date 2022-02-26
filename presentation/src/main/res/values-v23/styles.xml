@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.MorningIsMiracle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/main_5</item>
+        <item name="colorPrimaryVariant">@color/main_6</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/main_3</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/white</item>
+        <!--Status Bar 글자색깔 true 블랙 false 화이트-->
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>
