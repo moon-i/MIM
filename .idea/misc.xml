@@ -15,6 +15,10 @@
         <entry key="presentation/src/main/res/layout/activity_base.xml" value="0.16485507246376813" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.16485507246376813" />
         <entry key="presentation/src/main/res/layout/activity_material_calendar_view_test.xml" value="0.5" />
+        <entry key="presentation/src/main/res/layout/fragment_home.xml" value="0.5911458333333334" />
+        <entry key="presentation/src/main/res/layout/fragment_plan.xml" value="0.5911458333333334" />
+        <entry key="presentation/src/main/res/layout/fragment_statistics.xml" value="0.5911458333333334" />
+        <entry key="presentation/src/main/res/layout/fragment_tag.xml" value="0.5911458333333334" />
       </map>
     </option>
   </component>

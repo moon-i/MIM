@@ -1,4 +1,4 @@
-package com.moon.morningismiracle.calendar
+package com.moon.morningismiracle.custom_view.calendar
 
 import android.graphics.Color
 import android.text.style.ForegroundColorSpan
@@ -7,16 +7,16 @@ import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.DayViewDecorator
 import java.util.*
 
-class SunDayDecorator : DayViewDecorator {
+class SaturdayDecorator : DayViewDecorator {
     private val calendar: Calendar = Calendar.getInstance()
 
     override fun shouldDecorate(day: CalendarDay): Boolean {
         day.copyTo(calendar)
         val weekDay: Int = calendar.get(Calendar.DAY_OF_WEEK)
-        return weekDay == Calendar.SUNDAY
+        return weekDay == Calendar.SATURDAY
     }
 
     override fun decorate(view: DayViewFacade) {
-        view.addSpan(ForegroundColorSpan(Color.RED))
+        view.addSpan(ForegroundColorSpan(Color.BLUE))
     }
 }

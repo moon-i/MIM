@@ -2,7 +2,7 @@ package com.moon.morningismiracle
 
 import android.graphics.Color
 import android.os.Bundle
-import com.moon.morningismiracle.calendar.*
+import com.moon.morningismiracle.custom_view.calendar.*
 import com.moon.morningismiracle.databinding.ActivityMaterialCalendarViewTestBinding
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import java.util.*
