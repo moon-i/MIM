@@ -1,4 +1,4 @@
-package com.moon.morningismiracle.calendar
+package com.moon.morningismiracle.custom_view.calendar
 
 import com.prolificinteractive.materialcalendarview.DayViewDecorator
 import com.prolificinteractive.materialcalendarview.DayViewFacade
