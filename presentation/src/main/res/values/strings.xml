@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MorningIsMiracle</string>
+    <string name="pageHomeTitle">홈</string>
+    <string name="pagePlanTitle">계획</string>
+    <string name="pageTagTitle">태그</string>
+    <string name="pageStatisticsTitle">통계</string>
 </resources>
