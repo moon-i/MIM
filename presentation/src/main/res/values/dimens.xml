@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="titleTextSize">28sp</dimen>
+    <dimen name="titleTextMarginStart">30dp</dimen>
+    <dimen name="titleTextMarginTop">35dp</dimen>
+    <dimen name="contentsMarginHorizontal">25dp</dimen>
+    <dimen name="contentsMarginVertical">20dp</dimen>
+</resources>
