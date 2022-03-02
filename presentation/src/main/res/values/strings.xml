@@ -4,4 +4,6 @@
     <string name="pagePlanTitle">계획</string>
     <string name="pageTagTitle">태그</string>
     <string name="pageStatisticsTitle">통계</string>
+    <string name="planTitleToday">Today</string>
+    <string name="planTitleData">%1$d년 %2$02d월 %2$02d일</string>
 </resources>
