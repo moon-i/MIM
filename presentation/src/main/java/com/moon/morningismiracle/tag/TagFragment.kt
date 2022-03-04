@@ -27,15 +27,15 @@ class TagFragment: BaseFragment<FragmentTagBinding>() {
         // TODO TagState false인것 안보이게
         // TODO 실제 데이터 연결하기
         tagAdapter.setData(listOf(
-            TagModel(1, "공부", "#e65160", true),
-            TagModel(2, "놀기", "#ef8762", true),
-            TagModel(3, "요가", "#f8cc67", true),
-            TagModel(4, "필테", "#a5d576", true),
-            TagModel(5, "일", "#50d5b7", true),
-            TagModel(6, "먹기", "#59c5e7", true),
-            TagModel(7, "사시", "#66a0f5", true),
-            TagModel(8, "정시", "#a58dde", true),
-            TagModel(9, "토익", "#7d8692", true),
+            TagModel(1, "공부", "#F36472", true),
+            TagModel(2, "놀기", "#FA9673", true),
+            TagModel(3, "요가", "#FBD972", true),
+            TagModel(4, "필테", "#BCEF8A", true),
+            TagModel(5, "일", "#7CE2CB", true),
+            TagModel(6, "먹기", "#6CC7F1", true),
+            TagModel(7, "사시", "#7DB1FD", true),
+            TagModel(8, "정시", "#C5ADFF", true),
+            TagModel(9, "토익", "#999DA1", true),
             TagModel(10, "오픽", "#e65160", true)
         ))
 
