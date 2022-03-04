@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/infoLayoutBackgroundLine"
+    android:layout_width="match_parent"
+    android:layout_height="26dp"
+    android:background="@drawable/round_line"
+    android:paddingVertical="3dp">
+
+    <View
+        android:id="@+id/infoLayoutBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_alpha" />
+
+    <View
+        android:id="@+id/infoLayoutLogoLayout"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/round_line" />
+
+    <ImageView
+        android:id="@+id/infoLayoutLogoImageView"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_alignStart="@id/infoLayoutLogoLayout"
+        android:layout_alignEnd="@id/infoLayoutLogoLayout"
+        android:layout_centerVertical="true"
+        android:background="@drawable/ic_cancel" />
+
+    <TextView
+        android:id="@+id/infoLayoutTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="4dp"
+        android:layout_toEndOf="@id/infoLayoutLogoLayout"
+        android:text="취소"
+        android:textColor="@color/background_grey"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/infoLayoutValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
+        android:text="5건"
+        android:textColor="@color/background_grey"
+        android:textSize="12sp" />
+
+</RelativeLayout>

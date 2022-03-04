@@ -5,14 +5,19 @@
     <color name="background_light_grey">#E0E0E0</color>
     <color name="background_grey">#494949</color>
 
-    <color name="main_1">#e65160</color>
-    <color name="main_2">#ef8762</color>
-    <color name="main_3">#f8cc67</color>
-    <color name="main_4">#a5d576</color>
-    <color name="main_5">#50d5b7</color>
-    <color name="main_6">#59c5e7</color>
-    <color name="main_7">#66a0f5</color>
-    <color name="main_8">#a58dde</color>
+    <color name="main_1">#DC5D6A</color>
+    <color name="main_2">#E68765</color>
+    <color name="main_3">#E8C26B</color>
+    <color name="main_4">#A3CF77</color>
+    <color name="main_5">#59C8AF</color>
+    <color name="main_6">#53ADCA</color>
+    <color name="main_7">#5A8CD5</color>
+    <color name="main_8">#9E89D1</color>
     <color name="main_9">#7d8692</color>
+
+    <color name="state_fail">#C63D4A</color>
+    <color name="state_cancel">#CCA73C</color>
+    <color name="state_success">#639E27</color>
+    <color name="state_total">#2754A1</color>
 
 </resources>

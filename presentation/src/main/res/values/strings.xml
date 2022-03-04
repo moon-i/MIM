@@ -6,4 +6,7 @@
     <string name="pageStatisticsTitle">통계</string>
     <string name="planTitleToday">Today</string>
     <string name="planTitleData">%1$d년 %2$02d월 %2$02d일</string>
+    <string name="thisWeekTitle">이번주</string>
+    <string name="statisticsSubTitle">달성</string>
+    <string name="myDescription100">나는 <b>완벽한 J</b>다</string>
 </resources>
