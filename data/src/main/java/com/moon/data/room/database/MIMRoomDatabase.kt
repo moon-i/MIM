@@ -22,7 +22,7 @@ abstract class MIMRoomDatabase : RoomDatabase() {
     abstract fun statisticsDao(): StatisticsDao
     abstract fun tagDao(): TagDao
 
-    private class MIMDatabaseCallback(
+    class MIMDatabaseCallback(
         private val scope: CoroutineScope
     ) : RoomDatabase.Callback() {
 
