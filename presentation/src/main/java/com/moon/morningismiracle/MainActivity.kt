@@ -8,7 +8,9 @@ import com.moon.morningismiracle.home.HomeFragment
 import com.moon.morningismiracle.plan.PlanFragment
 import com.moon.morningismiracle.statistics.StatisticsFragment
 import com.moon.morningismiracle.tag.TagFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override var layoutResourceId: Int = R.layout.activity_main
 
