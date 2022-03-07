@@ -13,7 +13,8 @@
     <color name="main_6">#53ADCA</color>
     <color name="main_7">#5A8CD5</color>
     <color name="main_8">#9E89D1</color>
-    <color name="main_9">#7d8692</color>
+    <color name="main_9">#DCA1D4</color>
+    <color name="main_10">#7d8692</color>
 
     <color name="state_fail">#C63D4A</color>
     <color name="state_cancel">#CCA73C</color>

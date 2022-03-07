@@ -11,4 +11,8 @@
     <string name="myDescription100">나는 <b>완벽한 J</b>다</string>
     <string name="addPlanText">오늘 계획 추가하기</string>
     <string name="noPlanText">앗! 오늘의 계획이 아직 없네요\n계획을 추가해주세요!</string>
+
+    <string name="addTagTitle">새로운 테그 추가하기</string>
+    <string name="addTagHintText">테그 이름</string>
+    <string name="addTagButtonText">테그 추가하기</string>
 </resources>
