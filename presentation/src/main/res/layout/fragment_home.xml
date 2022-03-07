@@ -15,7 +15,7 @@
             android:text="@string/planTitleToday"
             android:textSize="@dimen/titleTextSize"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/planTitleDate"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,27 +25,26 @@
             android:id="@+id/planTitleDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
             android:text="@string/planTitleData"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@id/planTitle"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="14sp"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@id/planTitle" />
+            app:layout_constraintStart_toStartOf="@id/planTitle"
+            app:layout_constraintTop_toBottomOf="@id/planTitle" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/planRecyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/contentsMarginHorizontal"
-            android:layout_marginTop="@dimen/contentsMarginVertical"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="@dimen/contentsMarginHorizontal"
             android:overScrollMode="never"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/planTitle"
+            app:layout_constraintTop_toBottomOf="@id/planTitleDate"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
