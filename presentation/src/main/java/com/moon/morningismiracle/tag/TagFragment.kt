@@ -13,6 +13,8 @@ class TagFragment: BaseFragment<FragmentTagBinding>() {
 
     private val tagAdapter: TagRecyclerAdapter by lazy { TagRecyclerAdapter() }
 
+    private val addTagBottomSheet: AddTagBottomSheetDialogFragment by lazy { AddTagBottomSheetDialogFragment() }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
@@ -22,6 +24,10 @@ class TagFragment: BaseFragment<FragmentTagBinding>() {
         binding.tagRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = tagAdapter
+        }
+
+        binding.addTagBtn.setOnClickListener {
+            addTagBottomSheet.show(requireActivity().supportFragmentManager, AddTagBottomSheetDialogFragment.TAG)
         }
 
         // TODO TagState false인것 안보이게
