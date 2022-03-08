@@ -11,14 +11,14 @@ interface TagDao {
     suspend fun insert(tag: TagEntity)
 
     // 2. 태그 delete
-    @Delete
-    suspend fun delete(tag: TagEntity)
+    @Query("update tag_table set tag_state = 0 where tag_id= :tagId")
+    suspend fun deleteTag(tagId: Long): Int
 
     // 3. 태그 색상 수정
     @Query("update tag_table set tag_color = :color where tag_id= :tagId")
-    suspend fun updateTagColor(tagId: Int, color: String): Int
+    suspend fun updateTagColor(tagId: Long, color: String): Int
 
     // 4. 태그 조회
-    @Query("select * from tag_table where tag_state= 'true'")
+    @Query("select * from tag_table where tag_state= 1")
     fun getTagList(): Flow<List<TagEntity>>
 }

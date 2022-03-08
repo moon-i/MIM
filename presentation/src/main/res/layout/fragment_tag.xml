@@ -34,6 +34,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tagTitle" />
 
+        <ImageView
+            android:id="@+id/noTagImageView"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="@dimen/contentsMarginHorizontal"
+            android:layout_marginTop="@dimen/contentsMarginVertical"
+            android:layout_marginEnd="@dimen/contentsMarginHorizontal"
+            android:src="@drawable/ic_tag_label"
+            app:layout_constraintBottom_toTopOf="@id/noTagTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tagTitle"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/noTagTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/contentsMarginHorizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/contentsMarginHorizontal"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:text="@string/noTagText"
+            app:layout_constraintBottom_toTopOf="@id/addTagBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/noTagImageView" />
+
+
         <androidx.cardview.widget.CardView
             android:id="@+id/addTagBtn"
             android:layout_width="0dp"
