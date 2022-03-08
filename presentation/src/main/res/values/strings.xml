@@ -15,4 +15,7 @@
     <string name="addTagTitle">새로운 테그 추가하기</string>
     <string name="addTagHintText">테그 이름</string>
     <string name="addTagButtonText">테그 추가하기</string>
+    <string name="changeTagButtonText">테그 색상 변경하기</string>
+    <string name="noTagText">테그를 추가해서 효과적으로 계획을 세워보세요!\n운동, 공부, 독서 등 뭐든지 좋아요!</string>
+    <string name="noTagName">테그 이름은 필수입니다</string>
 </resources>

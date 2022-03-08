@@ -1,8 +1,10 @@
 package com.moon.domain.model
 
+import java.io.Serializable
+
 data class TagModel(
-    val tagId: Int,
-    val tagName: String,
-    val tagColor: String,
-    val tagState: Boolean = true
-)
+    var tagId: Long,
+    var tagName: String,
+    var tagColor: String,
+    var tagState: Boolean = true
+): Serializable

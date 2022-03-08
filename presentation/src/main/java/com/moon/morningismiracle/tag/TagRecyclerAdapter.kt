@@ -10,11 +10,21 @@ import com.moon.morningismiracle.databinding.ItemTagBinding
 import com.moon.morningismiracle.setDrawableTint
 
 class TagRecyclerAdapter: ListAdapter<TagModel, TagRecyclerAdapter.TagViewHolder>(tagDiffUtil) {
+    var onListClick: ((TagModel) -> Unit)? = null
+    var onDeleteClick: ((TagModel) -> Unit)? = null
 
     inner class TagViewHolder(private val binding: ItemTagBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TagModel) {
             binding.tagNameTextView.text = item.tagName
             binding.tagColorImageView.drawable.setDrawableTint(item.tagColor)
+
+            binding.deleteBtn.setOnClickListener {
+                onDeleteClick?.invoke(item)
+            }
+
+            binding.root.setOnClickListener {
+                onListClick?.invoke(item)
+            }
         }
     }
 
@@ -33,10 +43,10 @@ class TagRecyclerAdapter: ListAdapter<TagModel, TagRecyclerAdapter.TagViewHolder
     companion object {
         val tagDiffUtil = object: DiffUtil.ItemCallback<TagModel>() {
             override fun areItemsTheSame(oldItem: TagModel, newItem: TagModel): Boolean {
-                return oldItem == newItem
+                return oldItem.tagId == newItem.tagId
             }
             override fun areContentsTheSame(oldItem: TagModel, newItem: TagModel): Boolean {
-                return oldItem.tagId == newItem.tagId
+                return oldItem == newItem
             }
         }
     }

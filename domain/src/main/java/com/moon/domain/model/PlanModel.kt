@@ -1,7 +1,7 @@
 package com.moon.domain.model
 
 data class PlanModel(
-    val planId: Int,
+    val planId: Long,
     val planName: String,
     val planState: String,
     val planDate: String,
