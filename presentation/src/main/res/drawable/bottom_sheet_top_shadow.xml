@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="#08CCCCCC" />
+            <corners
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="#0ACCCCCC" />
+            <padding android:top="5dp" />
+            <corners
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="#0ACCCCCC" />
+            <padding android:top="8dp" />
+            <corners
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="#12CCCCCC" />
+            <padding android:top="12dp" />
+            <corners
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="#12CCCCCC" />
+            <padding android:top="17dp" />
+            <corners
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="#12CCCCCC" />
+            <padding android:top="23dp" />
+            <corners
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="#12CCCCCC" />
+            <padding android:top="30dp" />
+            <size android:height="30dp" />
+            <corners
+                android:topLeftRadius="20dp"
+                android:topRightRadius="20dp" />
+        </shape>
+    </item>
+
+</layer-list>

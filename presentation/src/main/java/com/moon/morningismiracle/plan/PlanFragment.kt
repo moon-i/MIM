@@ -1,9 +1,11 @@
 package com.moon.morningismiracle.plan
 
-import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.moon.domain.model.PlanModel
+import com.moon.domain.model.TagModel
 import com.moon.morningismiracle.BaseFragment
 import com.moon.morningismiracle.R
 import com.moon.morningismiracle.custom_view.calendar.BackgroundDecorator
@@ -16,21 +18,25 @@ import java.util.*
 
 class PlanFragment : BaseFragment<FragmentPlanBinding>() {
     override var layoutResourceId: Int = R.layout.fragment_plan
+    private val calendar by lazy { Calendar.getInstance() }
+    private val today by lazy { calendar.time }
+    private val tomorrow by lazy {
+        calendar.add(Calendar.DAY_OF_YEAR, 1)
+        calendar.time
+    }
+
+    private val planAdapter by lazy { PlanAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initView()
+        initPlanRecyclerView()
     }
 
     private fun initView() {
         binding.calendarView.apply {
             topbarVisible = false
-            val calendar = Calendar.getInstance()
-            val today: Date = calendar.time
-
-            calendar.add(Calendar.DAY_OF_YEAR, 1)
-            val tomorrow = calendar.time
             setCurrentDate(today)
 
             binding.dateTextView.text =
@@ -73,5 +79,23 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
         binding.calendarRightBtn.setOnClickListener {
             binding.calendarView.goToNext()
         }
+    }
+
+    fun initPlanRecyclerView() {
+        binding.calendarTabPlanList.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = planAdapter
+        }
+
+        planAdapter.setData(
+            listOf(
+                PlanModel(0, "과외", "완료", "2020", TagModel(0, "과외", "#DC5D6A")),
+                PlanModel(0, "과외", "완료", "2020", null),
+                PlanModel(0, "과외", "완료", "2020", TagModel(0, "과외", "#E68765")),
+                PlanModel(0, "과외", "완료", "2020", TagModel(0, "과외", "#DC5D6A")),
+                PlanModel(0, "과외", "완료", "2020", TagModel(0, "과외", "#DC5D6A")),
+                PlanModel(0, "과외", "완료", "2020", TagModel(0, "과외", "#DC5D6A")),
+            )
+        )
     }
 }
