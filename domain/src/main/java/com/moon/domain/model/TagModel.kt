@@ -7,4 +7,9 @@ data class TagModel(
     var tagName: String,
     var tagColor: String,
     var tagState: Boolean = true
-): Serializable
+) : Serializable {
+    override fun equals(other: Any?): Boolean {
+        return false
+    }
+}
+
