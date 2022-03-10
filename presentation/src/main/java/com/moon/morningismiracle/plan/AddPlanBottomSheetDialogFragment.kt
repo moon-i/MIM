@@ -6,28 +6,34 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.moon.domain.model.PlanModel
+import com.moon.domain.model.PlanState
 import com.moon.domain.model.TagModel
+import com.moon.morningismiracle.R
 import com.moon.morningismiracle.databinding.BottomSheetAddPlanBinding
 import com.moon.morningismiracle.tag.TagViewModel
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class AddPlanBottomSheetDialogFragment: BottomSheetDialogFragment() {
+class AddPlanBottomSheetDialogFragment : BottomSheetDialogFragment() {
     lateinit var binding: BottomSheetAddPlanBinding
     private val tagViewModel: TagViewModel by viewModels()
-
+    private val planViewModel: PlanViewModel by viewModels()
     private val planAddTagAdapter by lazy { PlanAddTagAdapter() }
 
     private var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>? = null
-    private var planData: PlanModel = PlanModel(0, "", "", Date(), null)
-    private var nonTagItem = TagModel(-1L, "", "", true)
-    private var mockList: MutableList<TagModel>? = null
+
+    private var planData: PlanModel = PlanModel(0, "", PlanState.WAITING, Date(), null)
+    private var nonTagItem = TagModel(-1L, "", "", true, true)
+    private var tagList: MutableList<TagModel>? = null
+    private var chooseDate: Date? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,12 +50,30 @@ class AddPlanBottomSheetDialogFragment: BottomSheetDialogFragment() {
 
         initTagList()
         initView()
+        tagViewModel.getTagList()
+        setObserver()
     }
 
     private fun initView() {
-        arguments?.getString(ARGS_KEY_DATE_DATA)?.let { title ->
+        arguments?.getParcelable<CalendarDay>(ARGS_KEY_DATE_DATA)?.let { date ->
             // TODO - 실제 데이터로 변경
-            binding.addPlanBottomSheetTitle.text = title
+            chooseDate = date.date
+            binding.addPlanBottomSheetTitle.text =
+                "${date.year}년 ${date.month + 1}월 ${date.day}일 계획 추가하기"
+        }
+
+        binding.addPlanBtn.setOnClickListener {
+            binding.plaInputField.editText?.let { editText ->
+                if (editText.text.isEmpty()) {
+                    binding.plaInputField.error = getString(R.string.noTagName)
+                } else {
+                    binding.plaInputField.error = null
+                    planData.planName = editText.text.toString()
+                    chooseDate?.let { date -> planData.planDate = date }
+                    planViewModel.addPlan(planData)
+                    dialog?.dismiss()
+                }
+            }
         }
     }
 
@@ -59,36 +83,40 @@ class AddPlanBottomSheetDialogFragment: BottomSheetDialogFragment() {
             adapter = planAddTagAdapter
             planAddTagAdapter.onTagSelect = ::onTagSelect
         }
-
-        // TODO - 실제 데이터로 변경
-        mockList = mutableListOf(
-            nonTagItem,
-            TagModel(1L, "운동", "#E8C26B", false),
-            TagModel(2L, "동구박", "#A3CF77", false),
-            TagModel(3L, "과수원길", "#59C8AF", false),
-            TagModel(4L, "아카시아꽃이", "#E8C26B", false),
-            TagModel(1L, "운동", "#E8C26B", false),
-            TagModel(2L, "동구박", "#A3CF77", false),
-        )
-        planAddTagAdapter.setData(
-            mockList!!
-        )
     }
 
     private fun onTagSelect(tagId: Long) {
-        mockList?.mapIndexed { i, tag ->
-            mockList?.get(i)?.tagState = tag.tagId == tagId
+        tagList?.let { list ->
+            list.mapIndexed { i, tag ->
+                list[i].tagSelected = tag.tagId == tagId
+            }
+            planAddTagAdapter.setData(list)
         }
-        planAddTagAdapter.setData(mockList!!)
+
+        if (tagId == -1L) {
+            planData.planTag = null
+        } else {
+            planData.planTag = TagModel(tagId = tagId, "", "", true)
+        }
+    }
+
+    private fun setObserver() {
+        tagViewModel.tagDataList.asLiveData().observe(this) {
+            tagList = it.toMutableList()
+            tagList?.let { list ->
+                list.add(0, nonTagItem)
+                planAddTagAdapter.setData(list)
+            }
+        }
     }
 
     companion object {
         const val TAG = "AddPlanBottomSheetDialogFragment"
 
-        fun newInstance(date: String): AddPlanBottomSheetDialogFragment {
+        fun newInstance(date: CalendarDay): AddPlanBottomSheetDialogFragment {
             val newFragment = AddPlanBottomSheetDialogFragment()
             val args = Bundle().apply {
-                putString(ARGS_KEY_DATE_DATA, date)
+                putParcelable(ARGS_KEY_DATE_DATA, date)
             }
             newFragment.arguments = args
             return newFragment

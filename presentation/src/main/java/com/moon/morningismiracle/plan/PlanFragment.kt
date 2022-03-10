@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.moon.domain.model.PlanModel
+import com.moon.domain.model.PlanState
 import com.moon.domain.model.TagModel
 import com.moon.morningismiracle.BaseFragment
 import com.moon.morningismiracle.R
@@ -70,9 +71,7 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
 
             setOnDateChangedListener { widget, date, selected ->
                 // TODO open bottom sheet
-                val addPlanThatDayBS = AddPlanBottomSheetDialogFragment.newInstance(
-                    "${date.year}년 ${date.month+1}월 ${date.day}일 계획 추가하기"
-                )
+                val addPlanThatDayBS = AddPlanBottomSheetDialogFragment.newInstance(date)
                 addPlanThatDayBS.show(requireActivity().supportFragmentManager, AddPlanBottomSheetDialogFragment.TAG)
             }
 
@@ -93,12 +92,12 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
 
         planAdapter.setData(
             listOf(
-                PlanModel(0, "과외", "완료", Date(), TagModel(0, "과외", "#DC5D6A")),
-                PlanModel(0, "과외", "완료", Date(), null),
-                PlanModel(0, "과외", "완료", Date(), TagModel(0, "과외", "#E68765")),
-                PlanModel(0, "과외", "완료", Date(), TagModel(0, "과외", "#DC5D6A")),
-                PlanModel(0, "과외", "완료", Date(), TagModel(0, "과외", "#DC5D6A")),
-                PlanModel(0, "과외", "완료", Date(), TagModel(0, "과외", "#DC5D6A")),
+                PlanModel(0, "과외", PlanState.SUCCESS, Date(), TagModel(0, "과외", "#DC5D6A")),
+                PlanModel(0, "과외", PlanState.LATER, Date(), null),
+                PlanModel(0, "과외", PlanState.CANCEL, Date(), TagModel(0, "과외", "#E68765")),
+                PlanModel(0, "과외", PlanState.WAITING, Date(), TagModel(0, "과외", "#DC5D6A")),
+                PlanModel(0, "과외", PlanState.SUCCESS, Date(), TagModel(0, "과외", "#DC5D6A")),
+                PlanModel(0, "과외", PlanState.LATER, Date(), TagModel(0, "과외", "#DC5D6A")),
             )
         )
     }

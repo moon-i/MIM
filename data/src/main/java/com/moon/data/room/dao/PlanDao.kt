@@ -29,7 +29,7 @@ interface PlanDao {
         update plan_table set plan_date = :newDate, plan_state = "LATER"
         where plan_id = :planId
     """)
-    suspend fun setPlanDelayOneDay(planId: Int, newDate: Date)
+    suspend fun setPlanDelayOneDay(planId: Long, newDate: Date)
 
     // 5. 해당 날짜의 계획 조회하기
     @Query(

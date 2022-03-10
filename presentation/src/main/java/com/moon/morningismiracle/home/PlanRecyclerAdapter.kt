@@ -4,11 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.moon.domain.model.PlanModel
+import com.moon.domain.model.PlanState
 import com.moon.morningismiracle.R
 import com.moon.morningismiracle.databinding.ItemPlanBinding
 import com.moon.morningismiracle.setDrawableTint
@@ -30,12 +30,12 @@ class PlanRecyclerAdapter : ListAdapter<PlanModel, PlanRecyclerAdapter.PlanViewH
                 binding.tabImageView.visibility = View.GONE
             }
 
-            when(item.planState) {
-                "SUCCESS" -> {
-                    context?.let {
-                        binding.itemBackgroundView.background.setTint(ContextCompat.getColor(it, R.color.background_light_grey))
-                    }
-                }
+            setStateUi(item.planState)
+        }
+
+        private fun setStateUi(state: PlanState) {
+            when (state) {
+                PlanState.SUCCESS -> binding.itemBackgroundView.background.setDrawableTint(R.color.main_4, binding.root.context)
             }
         }
     }
