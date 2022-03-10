@@ -70,6 +70,10 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
 
             setOnDateChangedListener { widget, date, selected ->
                 // TODO open bottom sheet
+                val addPlanThatDayBS = AddPlanBottomSheetDialogFragment.newInstance(
+                    "${date.year}년 ${date.month+1}월 ${date.day}일 계획 추가하기"
+                )
+                addPlanThatDayBS.show(requireActivity().supportFragmentManager, AddPlanBottomSheetDialogFragment.TAG)
             }
 
         }
@@ -89,12 +93,12 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
 
         planAdapter.setData(
             listOf(
-                PlanModel(0, "과외", "완료", "2020", TagModel(0, "과외", "#DC5D6A")),
-                PlanModel(0, "과외", "완료", "2020", null),
-                PlanModel(0, "과외", "완료", "2020", TagModel(0, "과외", "#E68765")),
-                PlanModel(0, "과외", "완료", "2020", TagModel(0, "과외", "#DC5D6A")),
-                PlanModel(0, "과외", "완료", "2020", TagModel(0, "과외", "#DC5D6A")),
-                PlanModel(0, "과외", "완료", "2020", TagModel(0, "과외", "#DC5D6A")),
+                PlanModel(0, "과외", "완료", Date(), TagModel(0, "과외", "#DC5D6A")),
+                PlanModel(0, "과외", "완료", Date(), null),
+                PlanModel(0, "과외", "완료", Date(), TagModel(0, "과외", "#E68765")),
+                PlanModel(0, "과외", "완료", Date(), TagModel(0, "과외", "#DC5D6A")),
+                PlanModel(0, "과외", "완료", Date(), TagModel(0, "과외", "#DC5D6A")),
+                PlanModel(0, "과외", "완료", Date(), TagModel(0, "과외", "#DC5D6A")),
             )
         )
     }
