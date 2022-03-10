@@ -33,9 +33,19 @@ abstract class MIMRoomDatabase : RoomDatabase() {
                     val wordDao = database.planDao()
 
                     // 앱 진입시 당일이 아닌 지난 계획 중 완료 못한 계획들 Fail로 변경
-                    wordDao.setPlanStateBeforeToday(Calendar.getInstance().time)
+                    wordDao.setPlanStateBeforeToday(clearCalendar().time)
                 }
             }
+        }
+
+        fun clearCalendar(): Calendar {
+            val cal = Calendar.getInstance()
+            cal[Calendar.HOUR_OF_DAY] = 0 // ! clear would not reset the hour of day !
+            cal.timeZone = TimeZone.getDefault()
+            cal.clear(Calendar.MINUTE)
+            cal.clear(Calendar.SECOND)
+            cal.clear(Calendar.MILLISECOND)
+            return cal
         }
     }
 

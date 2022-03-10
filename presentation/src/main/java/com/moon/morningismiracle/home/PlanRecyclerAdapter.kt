@@ -16,6 +16,10 @@ import com.moon.morningismiracle.setDrawableTint
 class PlanRecyclerAdapter : ListAdapter<PlanModel, PlanRecyclerAdapter.PlanViewHolder>(planDiffUtil) {
     private var context: Context? = null
 
+    var onSuccessClick: ((Long, Boolean) -> Unit)? = null
+    var onLaterClick: ((Long, Boolean) -> Unit)? = null
+    var onCancelClick: ((Long, Boolean) -> Unit)? = null
+
     inner class PlanViewHolder(private val binding: ItemPlanBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PlanModel) {
@@ -31,11 +35,40 @@ class PlanRecyclerAdapter : ListAdapter<PlanModel, PlanRecyclerAdapter.PlanViewH
             }
 
             setStateUi(item.planState)
+            setClick(item)
         }
 
         private fun setStateUi(state: PlanState) {
             when (state) {
-                PlanState.SUCCESS -> binding.itemBackgroundView.background.setDrawableTint(R.color.main_4, binding.root.context)
+                PlanState.SUCCESS -> binding.itemBackgroundView.background.setDrawableTint(R.color.plan_success, binding.root.context)
+                PlanState.CANCEL -> binding.itemBackgroundView.background.setDrawableTint(R.color.plan_cancel, binding.root.context)
+                else -> binding.itemBackgroundView.background.setDrawableTint(R.color.white, binding.root.context)
+            }
+        }
+
+        private fun setClick(planModel: PlanModel) {
+            binding.successBtn.setOnClickListener {
+                if (planModel.planState == PlanState.SUCCESS) {
+                    onSuccessClick?.invoke(planModel.planId, true)
+                } else {
+                    onSuccessClick?.invoke(planModel.planId, false)
+                }
+            }
+
+            binding.cancelBtn.setOnClickListener {
+                if (planModel.planState == PlanState.CANCEL) {
+                    onCancelClick?.invoke(planModel.planId, true)
+                } else {
+                    onCancelClick?.invoke(planModel.planId, false)
+                }
+            }
+
+            binding.laterBtn.setOnClickListener {
+                if (planModel.planState == PlanState.SUCCESS) {
+                    onLaterClick?.invoke(planModel.planId, false)
+                } else {
+                    onLaterClick?.invoke(planModel.planId, true)
+                }
             }
         }
     }

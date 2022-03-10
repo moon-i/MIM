@@ -33,17 +33,6 @@ object PlanMapper {
         return returnList
     }
 
-    // TODO
-    fun mapEntityToModel(entity: PlanEntity): PlanModel {
-        return PlanModel(
-            entity.planId,
-            entity.planName,
-            mapStringToState(entity.planState),
-            entity.planDate,
-            null
-        )
-    }
-
     fun mapModelToEntity(model: PlanModel): PlanEntity {
         return PlanEntity(
             model.planId,
@@ -59,8 +48,7 @@ object PlanMapper {
             PlanState.SUCCESS.dbVale -> PlanState.SUCCESS
             PlanState.FAIL.dbVale -> PlanState.FAIL
             PlanState.CANCEL.dbVale -> PlanState.CANCEL
-            PlanState.WAITING.dbVale -> PlanState.WAITING
-            else -> PlanState.LATER
+            else -> PlanState.WAITING
         }
     }
 }
