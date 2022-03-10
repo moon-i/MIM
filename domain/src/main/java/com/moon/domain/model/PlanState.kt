@@ -5,5 +5,4 @@ enum class PlanState(var dbVale: String, var uiValue: String) {
     FAIL("FAIL", "실패"),
     WAITING("WAITING", "대기"),
     CANCEL("CANCEL", "취소"),
-    LATER("LATER", "내일"),
 }

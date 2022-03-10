@@ -14,17 +14,12 @@ import com.moon.morningismiracle.custom_view.calendar.PlanDecorator
 import com.moon.morningismiracle.custom_view.calendar.SaturdayDecorator
 import com.moon.morningismiracle.custom_view.calendar.SunDayDecorator
 import com.moon.morningismiracle.databinding.FragmentPlanBinding
+import com.moon.morningismiracle.di.DateInfo
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import java.util.*
 
 class PlanFragment : BaseFragment<FragmentPlanBinding>() {
     override var layoutResourceId: Int = R.layout.fragment_plan
-    private val calendar by lazy { Calendar.getInstance() }
-    private val today by lazy { calendar.time }
-    private val tomorrow by lazy {
-        calendar.add(Calendar.DAY_OF_YEAR, 1)
-        calendar.time
-    }
 
     private val planAdapter by lazy { PlanAdapter() }
 
@@ -38,7 +33,7 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
     private fun initView() {
         binding.calendarView.apply {
             topbarVisible = false
-            setCurrentDate(today)
+            setCurrentDate(DateInfo.today)
 
             binding.dateTextView.text =
                 "${CalendarDay.today().year}년 ${CalendarDay.today().month + 1}월"
@@ -93,11 +88,11 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
         planAdapter.setData(
             listOf(
                 PlanModel(0, "과외", PlanState.SUCCESS, Date(), TagModel(0, "과외", "#DC5D6A")),
-                PlanModel(0, "과외", PlanState.LATER, Date(), null),
+                PlanModel(0, "과외", PlanState.SUCCESS, Date(), null),
                 PlanModel(0, "과외", PlanState.CANCEL, Date(), TagModel(0, "과외", "#E68765")),
                 PlanModel(0, "과외", PlanState.WAITING, Date(), TagModel(0, "과외", "#DC5D6A")),
                 PlanModel(0, "과외", PlanState.SUCCESS, Date(), TagModel(0, "과외", "#DC5D6A")),
-                PlanModel(0, "과외", PlanState.LATER, Date(), TagModel(0, "과외", "#DC5D6A")),
+                PlanModel(0, "과외", PlanState.WAITING, Date(), TagModel(0, "과외", "#DC5D6A")),
             )
         )
     }

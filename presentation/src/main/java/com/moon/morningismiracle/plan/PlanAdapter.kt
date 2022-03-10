@@ -38,11 +38,6 @@ class PlanAdapter: ListAdapter<PlanModel, PlanAdapter.PlanViewHolder>(planDiffUt
                 PlanState.FAIL -> binding.planStateBox.background.setDrawableTint(R.color.main_1, binding.root.context)
                 PlanState.WAITING -> binding.planStateBox.background.setDrawableTint(R.color.background_grey, binding.root.context)
                 PlanState.CANCEL -> binding.planStateBox.background.setDrawableTint(R.color.main_3, binding.root.context)
-                PlanState.LATER -> {
-                    // 미루기 상태로 남아있다는건 아직 대기중이라는 뜻
-                    binding.planStateTextView.text = PlanState.WAITING.uiValue
-                    binding.planStateBox.background.setDrawableTint(R.color.background_grey, binding.root.context)
-                }
             }
         }
     }

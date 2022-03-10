@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="85dp">
 
@@ -26,13 +27,16 @@
 
                 <TextView
                     android:id="@+id/planNameTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="25dp"
                     android:layout_marginEnd="5dp"
-                    android:textSize="16sp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@id/tabImageView"
+                    app:layout_constraintEnd_toStartOf="@id/successBtn"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -51,12 +55,15 @@
 
                 <TextView
                     android:id="@+id/tagNameTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
+                    android:ellipsize="end"
+                    android:lines="1"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@id/tabImageView"
+                    app:layout_constraintEnd_toStartOf="@id/successBtn"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@id/tabImageView"
                     app:layout_constraintTop_toTopOf="@id/tabImageView"
@@ -64,9 +71,9 @@
 
                 <ImageView
                     android:id="@+id/successBtn"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="9dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="5dp"
                     android:background="@drawable/dot_circle"
                     android:backgroundTint="@color/main_4"
                     android:padding="5dp"
@@ -78,9 +85,9 @@
 
                 <ImageView
                     android:id="@+id/laterBtn"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="9dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="5dp"
                     android:background="@drawable/dot_circle"
                     android:backgroundTint="@color/main_3"
                     android:padding="5dp"
@@ -92,9 +99,9 @@
 
                 <ImageView
                     android:id="@+id/cancelBtn"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="15dp"
                     android:background="@drawable/dot_circle"
                     android:backgroundTint="@color/main_1"
                     android:padding="5dp"

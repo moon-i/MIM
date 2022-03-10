@@ -3,8 +3,12 @@ package com.moon.morningismiracle.plan
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moon.domain.model.PlanModel
+import com.moon.domain.model.PlanState
 import com.moon.domain.usecase.*
+import com.moon.morningismiracle.di.DateInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
@@ -17,11 +21,12 @@ class PlanViewModel @Inject constructor(
     private val addPlanUseCase: AddPlanUseCase,
     private val deletePlanUseCase: DeletePlanUseCase,
     private val setPlanStateBeforeToday: SetPlanStateBeforeToday,
-    private val setPlanDelayOneDayUseCase: SetPlanDelayOneDayUseCase,
     private val getPlanListUseCase: GetPlanListUseCase,
-): ViewModel() {
+    private val setPlanStateUseCase: SetPlanStateUseCase,
+    private val setPlanDelayOneDayUseCase: SetPlanDelayOneDayUseCase,
+) : ViewModel() {
 
-    private val _planDataList = MutableStateFlow<List<PlanModel>>(emptyList())
+    private var _planDataList = MutableStateFlow<List<PlanModel>>(emptyList())
     val planDataList: StateFlow<List<PlanModel>> = _planDataList
 
     fun addPlan(planData: PlanModel) {
@@ -36,17 +41,25 @@ class PlanViewModel @Inject constructor(
         }
     }
 
-    fun setPlanDelayOndDay(planId: Long, newDate: Date) {
-        viewModelScope.launch {
-            setPlanDelayOneDayUseCase(planId, newDate)
+    fun getPlanList(date: Date) {
+        CoroutineScope(Dispatchers.IO).launch {
+            getPlanListUseCase(date = date).collect { list ->
+                _planDataList.value = list
+            }
         }
     }
 
-    fun getPlanList(date: Date) {
+    fun setPlan(planId: Long, state: PlanState) {
         viewModelScope.launch {
-            getPlanListUseCase(date).collect { list ->
-                _planDataList.value = list
-            }
+            setPlanStateUseCase(planId, state)
+            getPlanList(DateInfo.today)
+        }
+    }
+
+    fun setPlanDelayOndDay(planId: Long, newDate: Date) {
+        viewModelScope.launch {
+            setPlanDelayOneDayUseCase(planId, newDate)
+            getPlanList(DateInfo.today)
         }
     }
 }
