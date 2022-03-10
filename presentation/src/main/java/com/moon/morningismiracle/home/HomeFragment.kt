@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.moon.morningismiracle.BaseFragment
 import com.moon.morningismiracle.R
 import com.moon.morningismiracle.databinding.FragmentHomeBinding
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,7 +34,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun getPlanData() {
-        viewModel.getPlanList()
+        viewModel.getPlanList(CalendarDay.today().date)
     }
 
     private fun observePlanList() {
@@ -43,6 +44,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 binding.noPlanImageView.visibility = View.VISIBLE
                 binding.noPlanTextView.visibility = View.VISIBLE
             } else {
+                planAdapter.setData(list)
                 binding.planRecyclerView.visibility = View.VISIBLE
                 binding.noPlanImageView.visibility = View.GONE
                 binding.noPlanTextView.visibility = View.GONE

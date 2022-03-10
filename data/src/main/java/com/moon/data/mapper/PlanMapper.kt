@@ -1,18 +1,20 @@
 package com.moon.data.mapper
 
+import com.moon.data.room.entity.PlanEntity
 import com.moon.data.room.entity.PlanWithTagData
 import com.moon.domain.model.PlanModel
+import com.moon.domain.model.PlanState
 import com.moon.domain.model.TagModel
 
 object PlanMapper {
-    fun mapEntityToModel(entityList: List<PlanWithTagData>): List<PlanModel> {
+    fun mapEntityToModelList(entityList: List<PlanWithTagData>): List<PlanModel> {
         val returnList: MutableList<PlanModel> = mutableListOf()
         entityList.map { entity ->
             returnList.add(
                 PlanModel(
                     entity.planId,
                     entity.planName,
-                    entity.planState,
+                    mapStringToState(entity.planState),
                     entity.planDate,
                     entity.tagName?.let {
                         TagModel(
@@ -29,5 +31,36 @@ object PlanMapper {
             )
         }
         return returnList
+    }
+
+    // TODO
+    fun mapEntityToModel(entity: PlanEntity): PlanModel {
+        return PlanModel(
+            entity.planId,
+            entity.planName,
+            mapStringToState(entity.planState),
+            entity.planDate,
+            null
+        )
+    }
+
+    fun mapModelToEntity(model: PlanModel): PlanEntity {
+        return PlanEntity(
+            model.planId,
+            model.planName,
+            model.planDate,
+            model.planState.dbVale,
+            model.planTag?.tagId
+        )
+    }
+
+    private fun mapStringToState(stateString: String): PlanState {
+        return when (stateString) {
+            PlanState.SUCCESS.dbVale -> PlanState.SUCCESS
+            PlanState.FAIL.dbVale -> PlanState.FAIL
+            PlanState.CANCEL.dbVale -> PlanState.CANCEL
+            PlanState.WAITING.dbVale -> PlanState.WAITING
+            else -> PlanState.LATER
+        }
     }
 }

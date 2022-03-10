@@ -3,9 +3,9 @@ package com.moon.domain.model
 import java.util.Date
 
 data class PlanModel(
-    val planId: Long,
-    val planName: String,
-    val planState: String,
-    val planDate: Date,
-    val planTag: TagModel? = null
+    var planId: Long,
+    var planName: String,
+    var planState: PlanState,
+    var planDate: Date,
+    var planTag: TagModel? = null
 )

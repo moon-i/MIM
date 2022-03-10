@@ -29,7 +29,7 @@ class PlanAddTagAdapter : ListAdapter<TagModel, PlanAddTagAdapter.TagViewHolder>
                     tagImageView.drawable.setDrawableTint(item.tagColor)
                 }
 
-                if (item.tagState) {
+                if (item.tagSelected) {
                     if (item.tagColor.isNotBlank()) {
                         selectBackground.background.setDrawableTint(item.tagColor)
                     } else {
