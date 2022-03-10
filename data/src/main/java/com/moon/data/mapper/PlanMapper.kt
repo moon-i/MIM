@@ -13,7 +13,7 @@ object PlanMapper {
                     entity.planId,
                     entity.planName,
                     entity.planState,
-                    entity.planDate.toString(),
+                    entity.planDate,
                     entity.tagName?.let {
                         TagModel(
                             entity.planTagId ?: -1,
