@@ -29,15 +29,23 @@ class PlanViewModel @Inject constructor(
     private var _planDataList = MutableStateFlow<List<PlanModel>>(emptyList())
     val planDataList: StateFlow<List<PlanModel>> = _planDataList
 
+    private var _selectDayPlanDataList = MutableStateFlow<List<PlanModel>>(emptyList())
+    val selectDayPlanDataList: StateFlow<List<PlanModel>> = _selectDayPlanDataList
+
     fun addPlan(planData: PlanModel) {
         viewModelScope.launch {
             addPlanUseCase(planData)
         }
     }
 
-    fun deletePlan(planData: PlanModel) {
+    fun deletePlan(planData: PlanModel, isSelectedDate: Boolean) {
         viewModelScope.launch {
             deletePlanUseCase(planData)
+            if (isSelectedDate) {
+                getSelectDayPlanList(planData.planDate)
+            } else {
+                getPlanList(planData.planDate)
+            }
         }
     }
 
@@ -45,6 +53,14 @@ class PlanViewModel @Inject constructor(
         CoroutineScope(Dispatchers.IO).launch {
             getPlanListUseCase(date = date).collect { list ->
                 _planDataList.value = list
+            }
+        }
+    }
+
+    fun getSelectDayPlanList(date: Date) {
+        CoroutineScope(Dispatchers.IO).launch {
+            getPlanListUseCase(date = date).collect { list ->
+                _selectDayPlanDataList.value = list
             }
         }
     }

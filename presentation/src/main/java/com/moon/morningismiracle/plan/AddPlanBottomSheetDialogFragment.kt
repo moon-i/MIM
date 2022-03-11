@@ -56,7 +56,6 @@ class AddPlanBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     private fun initView() {
         arguments?.getParcelable<CalendarDay>(ARGS_KEY_DATE_DATA)?.let { date ->
-            // TODO - 실제 데이터로 변경
             chooseDate = date.date
             binding.addPlanBottomSheetTitle.text =
                 "${date.year}년 ${date.month + 1}월 ${date.day}일 계획 추가하기"

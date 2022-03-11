@@ -15,14 +15,16 @@
 
     <TextView
         android:id="@+id/planNameTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
         android:lines="1"
-        android:maxLength="20"
+        android:maxLines="1"
         android:textSize="14sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/tagColorView"
+        app:layout_constraintEnd_toStartOf="@id/planStateBox"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="계획이름" />
@@ -38,13 +40,16 @@
 
     <TextView
         android:id="@+id/planTagTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
         android:lines="1"
-        android:maxLength="20"
+        android:maxLines="1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@id/tagColorView"
+        app:layout_constraintEnd_toStartOf="@id/planStateBox"
         app:layout_constraintStart_toEndOf="@id/tagColorView"
         app:layout_constraintTop_toTopOf="@id/tagColorView"
         tools:text="태그 이름" />
@@ -53,7 +58,7 @@
         android:id="@+id/planStateBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="40dp"
         android:background="@drawable/round_alpha"
         android:backgroundTint="@color/main_4"
         android:orientation="horizontal"
@@ -72,5 +77,15 @@
             tools:text="완료" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/deleteBtn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_delete"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
