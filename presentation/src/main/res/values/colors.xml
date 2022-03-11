@@ -23,5 +23,6 @@
 
     <color name="plan_success">#EBF4E2</color>
     <color name="plan_cancel">#F8E9EA</color>
+    <color name="plan_fail">#FDFAE1</color>
 
 </resources>

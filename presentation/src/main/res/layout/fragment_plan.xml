@@ -22,6 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/contentsMarginVertical"
@@ -38,10 +39,9 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:background="@color/background_light_grey"
-                    android:layout_marginHorizontal="20dp"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/calendarCardView"
@@ -123,12 +123,26 @@
                     android:id="@+id/bottomSheetViewHandle"
                     android:layout_width="50dp"
                     android:layout_height="4dp"
-                    android:background="@drawable/dot_circle"
                     android:layout_marginTop="10dp"
+                    android:background="@drawable/dot_circle"
                     android:backgroundTint="@color/background_light_grey"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/bottomSheetView" />
+
+                <ImageView
+                    android:id="@+id/addPlanBtn"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="@color/main_5"
+                    android:elevation="4dp"
+                    android:padding="7dp"
+                    android:src="@drawable/ic_add"
+                    app:layout_constraintBottom_toBottomOf="@id/calendarCardView"
+                    app:layout_constraintEnd_toEndOf="@id/calendarCardView" />
 
                 <TextView
                     android:id="@+id/planListThatDayTitle"
@@ -150,10 +164,36 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="26dp"
                     android:nestedScrollingEnabled="false"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="15dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/planListThatDayTitle" />
+
+                <ImageView
+                    android:id="@+id/noListImageView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    android:src="@drawable/ic_list"
+                    app:layout_constraintBottom_toTopOf="@id/noListTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/planListThatDayTitle" />
+
+                <TextView
+                    android:id="@+id/noListTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="50dp"
+                    android:text="해당 날짜에 계획이 없습니다."
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/noListImageView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
