@@ -38,36 +38,20 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
     }
 
     private fun initView(date: Date) {
+        setPlanTitle(CalendarDay.from(date))
         binding.calendarView.apply {
             topbarVisible = false
+            selectedDate = CalendarDay.today()
+
             setCurrentDate(date)
 
-            binding.dateTextView.text =
-                "${CalendarDay.today().year}년 ${CalendarDay.today().month + 1}월"
-
-            // TODO 실제데이터로 변경하기
-            val mydate = CalendarDay.from(2022, 2, 16)
-            val mydate2 = CalendarDay.from(2022, 2, 17)// year, month, date
-            val threeColors = intArrayOf(
-                Color.rgb(0, 0, 255),
-                Color.rgb(0, 255, 0),
-                Color.rgb(255, 0, 0),
-                Color.rgb(0, 0, 255),
-                Color.rgb(0, 255, 0),
-                Color.rgb(255, 0, 0),
-                Color.rgb(0, 0, 255),
-                Color.rgb(0, 255, 0),
-                Color.rgb(255, 0, 0)
-            )
-            addDecorator(PlanDecorator(hashSetOf(mydate, mydate2), threeColors))
             addDecorator(SaturdayDecorator())
             addDecorator(SunDayDecorator())
             addDecorator(BackgroundDecorator(requireActivity()))
-            selectedDate = CalendarDay.today()
 
             setOnMonthChangedListener { widget, date ->
                 date?.let { date ->
-                    binding.dateTextView.text = "${date.year}년 ${date.month + 1}월"
+                    setPlanTitle(date)
                 }
             }
 
@@ -77,7 +61,6 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
                 selectedDateForAddPlan = date
                 setBottomListTitle(date)
             }
-
         }
     }
 
@@ -119,6 +102,10 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
 
     private fun setBottomListTitle(date: CalendarDay) {
         binding.planListThatDayTitle.text = "${date.year}년 ${date.month+1}월 ${date.day}일 계획"
+    }
+
+    private fun setPlanTitle(date: CalendarDay) {
+        binding.dateTextView.text = "${date.year}년 ${date.month + 1}월"
     }
 
     private fun showAddBottomSheet() {
