@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override var layoutResourceId: Int = R.layout.fragment_home
 
-    private val viewModel: PlanViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
     private val planAdapter = PlanRecyclerAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
