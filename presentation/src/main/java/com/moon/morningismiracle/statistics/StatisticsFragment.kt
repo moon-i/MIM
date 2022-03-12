@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.gms.ads.*
 import com.moon.morningismiracle.BaseFragment
 import com.moon.morningismiracle.R
 import com.moon.morningismiracle.databinding.FragmentStatisticsBinding
@@ -32,6 +33,7 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initAd()
         initView()
         getData()
         setObserver()
@@ -101,6 +103,15 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding>() {
             monthEndDate.month + 1,
             monthEndDate.day,
         )
+    }
+
+    private fun initAd() {
+        MobileAds.initialize(requireContext())
+
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.apply {
+            loadAd(adRequest)
+        }
     }
 
     private fun getData() {
