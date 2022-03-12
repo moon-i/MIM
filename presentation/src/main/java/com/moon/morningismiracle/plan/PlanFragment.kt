@@ -1,6 +1,5 @@
 package com.moon.morningismiracle.plan
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -10,7 +9,6 @@ import com.moon.domain.model.PlanModel
 import com.moon.morningismiracle.BaseFragment
 import com.moon.morningismiracle.R
 import com.moon.morningismiracle.custom_view.calendar.BackgroundDecorator
-import com.moon.morningismiracle.custom_view.calendar.PlanDecorator
 import com.moon.morningismiracle.custom_view.calendar.SaturdayDecorator
 import com.moon.morningismiracle.custom_view.calendar.SunDayDecorator
 import com.moon.morningismiracle.databinding.FragmentPlanBinding
@@ -69,6 +67,7 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = planAdapter
             planAdapter.onDeleteBtn = ::onDeleteBtn
+            itemAnimator = null
         }
         planViewModel.getSelectDayPlanList(date)
     }

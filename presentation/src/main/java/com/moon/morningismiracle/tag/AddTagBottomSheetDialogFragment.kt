@@ -95,6 +95,7 @@ class AddTagBottomSheetDialogFragment : BottomSheetDialogFragment() {
             adapter = colorListAdapter
             colorListAdapter.onColorClick = ::onColorClick
             colorListAdapter.setData(colorList)
+            itemAnimator = null
         }
     }
 

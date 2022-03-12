@@ -33,6 +33,7 @@ class TagFragment: BaseFragment<FragmentTagBinding>() {
             adapter = tagAdapter
             tagAdapter.onDeleteClick = ::onDeleteClick
             tagAdapter.onListClick = ::onListClick
+            itemAnimator = null
         }
 
         binding.addTagBtn.setOnClickListener {
