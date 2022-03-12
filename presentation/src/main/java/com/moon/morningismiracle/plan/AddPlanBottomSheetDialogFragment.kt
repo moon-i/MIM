@@ -1,5 +1,6 @@
 package com.moon.morningismiracle.plan
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.moon.domain.model.PlanState
 import com.moon.domain.model.TagModel
 import com.moon.morningismiracle.R
 import com.moon.morningismiracle.databinding.BottomSheetAddPlanBinding
+import com.moon.morningismiracle.home.HomeFragment
 import com.moon.morningismiracle.tag.TagViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,6 +54,14 @@ class AddPlanBottomSheetDialogFragment : BottomSheetDialogFragment() {
         initView()
         tagViewModel.getTagList()
         setObserver()
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        chooseDate?.let { date ->
+            (parentFragment as? HomeFragment)?.getPlanData()
+            (parentFragment as? PlanFragment)?.getDate(date)
+        }
     }
 
     private fun initView() {

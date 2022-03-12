@@ -1,5 +1,6 @@
 package com.moon.morningismiracle.tag
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -54,6 +55,11 @@ class AddTagBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 initViewAddMode()
             }
         }
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        (parentFragment as? TagFragment)?.getData()
     }
 
     private fun initViewAddMode() {
