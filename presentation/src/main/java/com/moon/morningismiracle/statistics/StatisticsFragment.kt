@@ -1,7 +1,6 @@
 package com.moon.morningismiracle.statistics
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -43,12 +42,14 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding>() {
             layoutManager = GridLayoutManager(context, 2)
             adapter = tagWeekStatisticsAdapter
             isNestedScrollingEnabled = false
+            itemAnimator = null
         }
 
         binding.tagStatisticsMonthRecyclerView.apply {
             layoutManager = GridLayoutManager(context, 2)
             adapter = tagMonthStatisticsAdapter
             isNestedScrollingEnabled = false
+            itemAnimator = null
         }
 
         binding.totalWeekInfo.apply {

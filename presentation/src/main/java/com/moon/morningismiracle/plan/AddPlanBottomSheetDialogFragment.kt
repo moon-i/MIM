@@ -81,6 +81,7 @@ class AddPlanBottomSheetDialogFragment : BottomSheetDialogFragment() {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = planAddTagAdapter
             planAddTagAdapter.onTagSelect = ::onTagSelect
+            itemAnimator = null
         }
     }
 

@@ -12,7 +12,6 @@ import com.moon.morningismiracle.R
 import com.moon.morningismiracle.databinding.FragmentHomeBinding
 import com.moon.morningismiracle.di.DateInfo
 import com.moon.morningismiracle.plan.AddPlanBottomSheetDialogFragment
-import com.moon.morningismiracle.plan.PlanViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,6 +41,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.planRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = planAdapter
+            itemAnimator = null
             setHasFixedSize(true)
             planAdapter.apply {
                 onSuccessClick = ::onSuccessClick
