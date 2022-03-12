@@ -41,6 +41,7 @@ class TagViewModel @Inject constructor(
     fun deleteTag(tagId: Long) {
         CoroutineScope(Dispatchers.IO).launch {
             deleteTagUseCase(tagId)
+            getTagList()
         }
     }
 
