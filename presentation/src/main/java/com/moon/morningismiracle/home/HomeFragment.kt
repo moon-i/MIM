@@ -11,6 +11,7 @@ import com.moon.morningismiracle.BaseFragment
 import com.moon.morningismiracle.R
 import com.moon.morningismiracle.databinding.FragmentHomeBinding
 import com.moon.morningismiracle.di.DateInfo
+import com.moon.morningismiracle.plan.AddPlanBottomSheetDialogFragment
 import com.moon.morningismiracle.plan.PlanViewModel
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,6 +49,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 onCancelClick = ::onCancelClick
             }
         }
+        binding.addPlanBtn.setOnClickListener {
+            showAddBottomSheet()
+        }
     }
 
     private fun getPlanData() {
@@ -66,6 +70,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 binding.noPlanImageView.visibility = View.GONE
                 binding.noPlanTextView.visibility = View.GONE
             }
+        }
+    }
+
+    private fun showAddBottomSheet() {
+        val addPlanThatDayBS = AddPlanBottomSheetDialogFragment.newInstance(CalendarDay.from(DateInfo.today))
+        addPlanThatDayBS.show(
+            requireActivity().supportFragmentManager,
+            AddPlanBottomSheetDialogFragment.TAG
+        )
+        requireActivity().supportFragmentManager.executePendingTransactions()
+        addPlanThatDayBS.dialog?.setOnDismissListener {
+            getPlanData()
         }
     }
 
