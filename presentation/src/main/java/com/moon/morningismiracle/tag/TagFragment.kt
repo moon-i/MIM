@@ -18,7 +18,6 @@ class TagFragment: BaseFragment<FragmentTagBinding>() {
     private val tagViewModel: TagViewModel by viewModels()
 
     private val tagAdapter: TagRecyclerAdapter by lazy { TagRecyclerAdapter() }
-    private val addTagBottomSheet: AddTagBottomSheetDialogFragment by lazy { AddTagBottomSheetDialogFragment.getInstance(false) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,7 +36,12 @@ class TagFragment: BaseFragment<FragmentTagBinding>() {
         }
 
         binding.addTagBtn.setOnClickListener {
+            val addTagBottomSheet = AddTagBottomSheetDialogFragment.getInstance(false)
             addTagBottomSheet.show(requireActivity().supportFragmentManager, AddTagBottomSheetDialogFragment.TAG)
+            requireActivity().supportFragmentManager.executePendingTransactions()
+            addTagBottomSheet.dialog?.setOnDismissListener {
+                getData()
+            }
         }
     }
 
@@ -65,7 +69,15 @@ class TagFragment: BaseFragment<FragmentTagBinding>() {
     }
 
     private fun onListClick(tagModel: TagModel) {
-        val updateBottomSheetDialogFragment = AddTagBottomSheetDialogFragment.getInstance(true, tagModel)
-        updateBottomSheetDialogFragment.show(requireActivity().supportFragmentManager, "${AddTagBottomSheetDialogFragment.TAG}${tagModel.tagId}")
+        val updateBottomSheetDialogFragment =
+            AddTagBottomSheetDialogFragment.getInstance(true, tagModel)
+        updateBottomSheetDialogFragment.show(
+            requireActivity().supportFragmentManager,
+            "${AddTagBottomSheetDialogFragment.TAG}${tagModel.tagId}"
+        )
+        requireActivity().supportFragmentManager.executePendingTransactions()
+        updateBottomSheetDialogFragment.dialog?.setOnDismissListener {
+            getData()
+        }
     }
 }
