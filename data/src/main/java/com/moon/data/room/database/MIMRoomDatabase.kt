@@ -1,6 +1,7 @@
 package com.moon.data.room.database
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -30,22 +31,14 @@ abstract class MIMRoomDatabase : RoomDatabase() {
             super.onCreate(db)
             INSTANCE?.let { database ->
                 scope.launch {
-                    val wordDao = database.planDao()
-
-                    // 앱 진입시 당일이 아닌 지난 계획 중 완료 못한 계획들 Fail로 변경
-                    wordDao.setPlanStateBeforeToday(clearCalendar().time)
+                    val tagDao = database.tagDao()
+                    // 기본 생성 tag
+                    tagDao.insert(TagEntity(0, "공부", "#DC5D6A", true))
+                    tagDao.insert(TagEntity(0, "독서", "#E68765", true))
+                    tagDao.insert(TagEntity(0, "운동", "#E8C26B", true))
+                    tagDao.insert(TagEntity(0, "친목", "#A3CF77", true))
                 }
             }
-        }
-
-        fun clearCalendar(): Calendar {
-            val cal = Calendar.getInstance()
-            cal[Calendar.HOUR_OF_DAY] = 0 // ! clear would not reset the hour of day !
-            cal.timeZone = TimeZone.getDefault()
-            cal.clear(Calendar.MINUTE)
-            cal.clear(Calendar.SECOND)
-            cal.clear(Calendar.MILLISECOND)
-            return cal
         }
     }
 
