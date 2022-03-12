@@ -1,8 +1,10 @@
 package com.moon.morningismiracle.di
 
 import com.moon.data.repo.PlanRepositoryImpl
+import com.moon.data.repo.StatisticsRepositoryImpl
 import com.moon.data.repo.TagRepositoryImpl
 import com.moon.domain.repository.PlanRepository
+import com.moon.domain.repository.StatisticsRepository
 import com.moon.domain.repository.TagRepository
 import dagger.Binds
 import dagger.Module
@@ -17,4 +19,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun provideTagRepository(impl: TagRepositoryImpl): TagRepository
+
+    @Binds
+    abstract fun provideStatisticsRepository(impl: StatisticsRepositoryImpl): StatisticsRepository
 }

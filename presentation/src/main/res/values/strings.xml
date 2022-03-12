@@ -8,7 +8,6 @@
     <string name="planTitleData">%1$d년 %2$02d월 %3$02d일</string>
     <string name="thisWeekTitle">이번주</string>
     <string name="statisticsSubTitle">달성</string>
-    <string name="myDescription100">나는 <b>완벽한 J</b>다</string>
     <string name="addPlanText">오늘 계획 추가하기</string>
     <string name="noPlanText">앗! 오늘의 계획이 아직 없네요\n계획을 추가해주세요!</string>
 
@@ -23,4 +22,23 @@
     <string name="nonTagText">태그 없음</string>
 
     <string name="laterWarningText">완료한 계획은 미룰 수 없어요!</string>
+    <string name="statisticMonthTitle">이번달</string>
+
+    <!-- statistics -->
+    <string name="myDescription100">나는 <b>완벽한 J</b>다</string>
+    <string name="myDescription80">나는 <b>대단한 J</b>다</string>
+    <string name="myDescription60">나는 <b>J</b>다</string>
+    <string name="myDescription40">나는 <b>P일 수 도</b>있다</string>
+    <string name="myDescription20">나는 <b>P</b>다</string>
+
+    <string name="statisticsTotal">총</string>
+    <string name="statisticsSuccess">성공</string>
+    <string name="statisticsCancel">취소</string>
+    <string name="statisticsFail">실패</string>
+    <string name="statisticsUnit">%d건</string>
+
+    <string name="statisticsTagTotal">총 %d건</string>
+    <string name="statisticsTagSuccess">성공 %d건</string>
+    <string name="statisticsDateRange">%1$d.%2$02d.%3$02d - %4$d.%5$02d.%6$02d</string>
+
 </resources>
