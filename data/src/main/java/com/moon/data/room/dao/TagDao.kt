@@ -20,5 +20,5 @@ interface TagDao {
 
     // 4. 태그 조회
     @Query("select * from tag_table where tag_state= 1")
-    fun getTagList(): Flow<List<TagEntity>>
+    fun getTagList(): List<TagEntity>
 }

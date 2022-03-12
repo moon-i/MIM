@@ -6,7 +6,6 @@ import com.moon.domain.DataResult
 import com.moon.domain.model.TagModel
 import com.moon.domain.repository.TagRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -26,7 +25,7 @@ class TagRepositoryImpl @Inject constructor(private val database: MIMRoomDatabas
 
     override fun getTagList(): Flow<List<TagModel>> {
         return flow {
-            database.tagDao().getTagList().collect { list ->
+            database.tagDao().getTagList().let { list ->
                 val returnData: MutableList<TagModel> = mutableListOf()
                 list.map { item ->
                     returnData.add(TagMapper.entityToModel(item))
