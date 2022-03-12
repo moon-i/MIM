@@ -7,4 +7,5 @@ data class ResultTagCountData(
     @ColumnInfo(name = "tag_name") val tagName: String? = null,
     @ColumnInfo(name = "tag_color") val tagColor: String? = null,
     @ColumnInfo(name = "count") val count: Int,
+    @ColumnInfo(name = "success_count") val successCount: Int,
 )
