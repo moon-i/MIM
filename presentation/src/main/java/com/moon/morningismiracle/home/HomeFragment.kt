@@ -22,6 +22,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val viewModel: HomeViewModel by viewModels()
     private val planAdapter = PlanRecyclerAdapter()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        checkVisitLastTime()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -71,6 +77,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 binding.noPlanTextView.visibility = View.GONE
             }
         }
+    }
+
+    private fun checkVisitLastTime() {
+        viewModel.setPlanStateBeforeToday(DateInfo.today)
     }
 
     private fun showAddBottomSheet() {
