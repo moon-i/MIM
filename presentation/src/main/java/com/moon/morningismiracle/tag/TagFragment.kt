@@ -38,15 +38,11 @@ class TagFragment: BaseFragment<FragmentTagBinding>() {
 
         binding.addTagBtn.setOnClickListener {
             val addTagBottomSheet = AddTagBottomSheetDialogFragment.getInstance(false)
-            addTagBottomSheet.show(requireActivity().supportFragmentManager, AddTagBottomSheetDialogFragment.TAG)
-            requireActivity().supportFragmentManager.executePendingTransactions()
-            addTagBottomSheet.dialog?.setOnDismissListener {
-                getData()
-            }
+            addTagBottomSheet.show(childFragmentManager, AddTagBottomSheetDialogFragment.TAG)
         }
     }
 
-    private fun getData() {
+    fun getData() {
         tagViewModel.getTagList()
     }
 
@@ -73,12 +69,8 @@ class TagFragment: BaseFragment<FragmentTagBinding>() {
         val updateBottomSheetDialogFragment =
             AddTagBottomSheetDialogFragment.getInstance(true, tagModel)
         updateBottomSheetDialogFragment.show(
-            requireActivity().supportFragmentManager,
+            childFragmentManager,
             "${AddTagBottomSheetDialogFragment.TAG}${tagModel.tagId}"
         )
-        requireActivity().supportFragmentManager.executePendingTransactions()
-        updateBottomSheetDialogFragment.dialog?.setOnDismissListener {
-            getData()
-        }
     }
 }

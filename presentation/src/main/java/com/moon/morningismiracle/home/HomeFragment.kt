@@ -60,7 +60,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
     }
 
-    private fun getPlanData() {
+    fun getPlanData() {
         viewModel.getPlanList(DateInfo.today)
     }
 
@@ -86,13 +86,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun showAddBottomSheet() {
         val addPlanThatDayBS = AddPlanBottomSheetDialogFragment.newInstance(CalendarDay.from(DateInfo.today))
         addPlanThatDayBS.show(
-            requireActivity().supportFragmentManager,
+            childFragmentManager,
             AddPlanBottomSheetDialogFragment.TAG
         )
-        requireActivity().supportFragmentManager.executePendingTransactions()
-        addPlanThatDayBS.dialog?.setOnDismissListener {
-            getPlanData()
-        }
     }
 
     private fun onSuccessClick(planId: Long, isSelect: Boolean) {

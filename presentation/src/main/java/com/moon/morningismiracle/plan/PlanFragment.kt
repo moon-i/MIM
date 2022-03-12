@@ -31,7 +31,8 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         initView(DateInfo.today)
-        initPlanRecyclerView(DateInfo.today)
+        initPlanRecyclerView()
+        getDate(DateInfo.today)
         setObserve()
         setOnClick()
     }
@@ -63,13 +64,16 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
         }
     }
 
-    private fun initPlanRecyclerView(date: Date) {
+    private fun initPlanRecyclerView() {
         binding.calendarTabPlanList.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = planAdapter
             planAdapter.onDeleteBtn = ::onDeleteBtn
             itemAnimator = null
         }
+    }
+
+    fun getDate(date: Date) {
         planViewModel.getSelectDayPlanList(date)
     }
 
@@ -115,13 +119,9 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
     private fun showAddBottomSheet() {
         val addPlanThatDayBS = AddPlanBottomSheetDialogFragment.newInstance(selectedDateForAddPlan)
         addPlanThatDayBS.show(
-            requireActivity().supportFragmentManager,
+            childFragmentManager,
             AddPlanBottomSheetDialogFragment.TAG
         )
-        requireActivity().supportFragmentManager.executePendingTransactions()
-        addPlanThatDayBS.dialog?.setOnDismissListener {
-            planViewModel.getSelectDayPlanList(selectedDateForAddPlan.date)
-        }
     }
 
     private fun onDeleteBtn(item: PlanModel) {
