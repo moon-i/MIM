@@ -2,6 +2,7 @@ package com.moon.morningismiracle.plan
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -95,7 +96,11 @@ class PlanFragment : BaseFragment<FragmentPlanBinding>() {
             binding.calendarView.goToNext()
         }
         binding.addPlanBtn.setOnClickListener {
-            showAddBottomSheet()
+            if (selectedDateForAddPlan.date.time >= DateInfo.today.time) {
+                showAddBottomSheet()
+            } else {
+                Toast.makeText(requireContext(), R.string.addPlanWarningText, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

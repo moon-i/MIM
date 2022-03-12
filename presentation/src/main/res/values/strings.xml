@@ -22,6 +22,7 @@
     <string name="nonTagText">태그 없음</string>
 
     <string name="laterWarningText">완료한 계획은 미룰 수 없어요!</string>
+    <string name="addPlanWarningText">이미 지난 날에 계획을 추가 할 수 없어요!</string>
     <string name="statisticMonthTitle">이번달</string>
 
     <!-- statistics -->
