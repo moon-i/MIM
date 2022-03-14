@@ -20,7 +20,7 @@ android {
         applicationId "com.moon.morningismiracle"
         minSdk 21
         targetSdk 31
-        versionCode 1
+        versionCode 3
         versionName "1.0"
 
         buildConfigField "String", "ADMOB_API_APPLICATION_KEY", properties['adMobApplicationID']
