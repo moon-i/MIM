@@ -9,7 +9,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
@@ -36,33 +35,25 @@ class StatisticsViewModel @Inject constructor(
 
     fun getResultStateCountForWeek(startDate: Date, endDate: Date) {
         CoroutineScope(Dispatchers.IO).launch {
-            getResultStateCountUseCase(startDate, endDate).collect { dataResult ->
-                _weekStateCount.value = dataResult
-            }
+            _weekStateCount.value = getResultStateCountUseCase(startDate, endDate)
         }
     }
 
     fun getResultStateCountForMonth(startDate: Date, endDate: Date) {
         CoroutineScope(Dispatchers.IO).launch {
-            getResultStateCountUseCase(startDate, endDate).collect { dataResult ->
-                _monthStateCount.value = dataResult
-            }
+            _monthStateCount.value = getResultStateCountUseCase(startDate, endDate)
         }
     }
 
     fun getResultTagCountForWeek(startDate: Date, endDate: Date) {
         CoroutineScope(Dispatchers.IO).launch {
-            getResultTagCountUseCase(startDate, endDate).collect { dataResult ->
-                _tagStatisticsWeekList.value = dataResult
-            }
+            _tagStatisticsWeekList.value = getResultTagCountUseCase(startDate, endDate)
         }
     }
 
     fun getResultTagCountForMonth(startDate: Date, endDate: Date) {
         CoroutineScope(Dispatchers.IO).launch {
-            getResultTagCountUseCase(startDate, endDate).collect { dataResult ->
-                _tagStatisticsMonthList.value = dataResult
-            }
+            _tagStatisticsMonthList.value = getResultTagCountUseCase(startDate, endDate)
         }
     }
 }

@@ -5,8 +5,6 @@ import com.moon.data.mapper.PlanMapper
 import com.moon.domain.model.PlanModel
 import com.moon.domain.model.PlanState
 import com.moon.domain.repository.PlanRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import java.util.*
 import javax.inject.Inject
 
@@ -33,9 +31,7 @@ class PlanRepositoryImpl @Inject constructor(private val database: MIMRoomDataba
         database.planDao().setPlanStateBeforeToday(date)
     }
 
-    override fun getPlanListThatDate(date: Date): Flow<List<PlanModel>> {
-        return flow {
-            emit(PlanMapper.mapEntityToModelList(database.planDao().getPlanListThatDate(date)))
-        }
+    override suspend fun getPlanListThatDate(date: Date): List<PlanModel> {
+        return PlanMapper.mapEntityToModelList(database.planDao().getPlanListThatDate(date))
     }
 }

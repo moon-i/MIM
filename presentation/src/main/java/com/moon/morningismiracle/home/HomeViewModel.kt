@@ -26,16 +26,14 @@ class HomeViewModel @Inject constructor(
     private val setPlanDelayOneDayUseCase: SetPlanDelayOneDayUseCase,
     private val setPlanStateBeforeTodayUseCase: SetPlanStateBeforeTodayUseCase,
     private val dateStore: DataStore,
-): ViewModel() {
+) : ViewModel() {
 
     private val _planDataList = MutableStateFlow<List<PlanModel>>(emptyList())
     val planDataList: StateFlow<List<PlanModel>> = _planDataList
 
     fun getPlanList(date: Date) {
         CoroutineScope(Dispatchers.IO).launch {
-            getPlanListUseCase(date = date).collect { list ->
-                _planDataList.value = list
-            }
+            _planDataList.value = getPlanListUseCase(date = date)
         }
     }
 
