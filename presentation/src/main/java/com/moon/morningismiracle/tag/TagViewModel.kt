@@ -26,9 +26,7 @@ class TagViewModel @Inject constructor(
 
     fun getTagList() {
         CoroutineScope(Dispatchers.IO).launch {
-            getTagListUseCase().collect { dataResult ->
-                _tagDataList.value = dataResult
-            }
+            _tagDataList.value = getTagListUseCase()
         }
     }
 

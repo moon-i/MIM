@@ -22,7 +22,7 @@ interface StatisticsDao {
         plan_date <= :endDate
     """
     )
-    fun getResultStateCount(startDate: Date, endDate: Date): ResultStateCountData
+    suspend fun getResultStateCount(startDate: Date, endDate: Date): ResultStateCountData
 
     // 2. 태그별 건수 조회
     @Query(
@@ -41,5 +41,5 @@ interface StatisticsDao {
         group by plan_tag_id;
     """
     )
-    fun getResultTagCount(startDate: Date, endDate: Date): List<ResultTagCountData>
+    suspend fun getResultTagCount(startDate: Date, endDate: Date): List<ResultTagCountData>
 }

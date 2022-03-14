@@ -11,7 +11,7 @@ interface PlanDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(plan: PlanEntity)
 
-    // 2. 계획 delete - TODO 상태가 waiting, later인것만 호출하도록 보장하기
+    // 2. 계획 delete
     @Delete
     suspend fun delete(plan: PlanEntity)
 
@@ -45,5 +45,5 @@ interface PlanDao {
         where plan_date = :date
     """
     )
-    fun getPlanListThatDate(date: Date): List<PlanWithTagData>
+    suspend fun getPlanListThatDate(date: Date): List<PlanWithTagData>
 }

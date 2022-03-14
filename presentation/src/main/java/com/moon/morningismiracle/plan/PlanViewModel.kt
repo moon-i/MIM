@@ -39,9 +39,7 @@ class PlanViewModel @Inject constructor(
 
     fun getSelectDayPlanList(date: Date) {
         CoroutineScope(Dispatchers.IO).launch {
-            getPlanListUseCase(date = date).collect { list ->
-                _selectDayPlanDataList.value = list
-            }
+            _selectDayPlanDataList.value = getPlanListUseCase(date = date)
         }
     }
 }
