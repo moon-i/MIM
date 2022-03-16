@@ -4,7 +4,8 @@ MBTI J인 계획 러버들을 위한 계획 도우미 Application
 <br>
 
 ## Download
-심사중..
+https://play.google.com/store/apps/details?id=com.moon.morningismiracle
+- 요즘은 검색이 되려면 사용자들도 좀 많아지고 업데이트를 꾸준히 해야한다고 한다.. 검색이 안된다니 좀 슬푸지만 등록완료~
 <br>
 <br>
 
